@@ -1,0 +1,23 @@
+Config { 
+        -- font = "-misc-fixed-*-*-*-*-11-*-*-*-*-*-*-*"
+       font = "xft:0xProto Nerd Font Mono"
+       , overrideRedirect = False,
+       , additionalFonts = ["xft:0xProto Nerd Font Mono:pixelsize=11:style=Regular:hinting=true:antialias=true"],
+       , bgColor = "#19222c"
+       , fgColor = "#7c97b5"
+       , position = TopH 25
+       , lowerOnStart = True
+       , commands = [
+                    Run Date "<fc=#b0d1f7><fn=1>\xf133</fn> %B %A (%D)</fc>" "date" 10,
+                    Run Date "<fc=#7af1b9><fn=1>\xe641</fn> %r</fc>" "time" 10,
+                    Run Memory ["-t", "<fn=1>\xf035b</fn> <usedratio>%"] 30,
+                    Run DiskU [("/", "<fn=1>\xf0a0</fn> <free>")] [] 30,
+                    Run Cpu ["-t", "<fn=1>\xf108</fn> <user>%"] 10,
+                    Run Alsa "default" "Master" ["-t", "<fn=1>\xf057e</fn> <volumevbar>"],
+                    Run XPropertyLog "XMonadLog"
+                ]
+       , iconRoot = "/home/toxpy/icons",
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "  %alsa:default:Master% | %XMonadLog% } %time% { <fc=#d5b0f7>%memory% %cpu% %disku%</fc> | %date%   "
+       }
