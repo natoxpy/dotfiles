@@ -26,6 +26,8 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 -- import XMonad.Util.Ungrab
 
+import XMonad.Actions.WithAll
+
 import XMonad.Layout.Magnifier
 import XMonad.Layout.ThreeColumns
 
@@ -102,6 +104,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
+
+    , ((modm .|. shiftMask, xK_l     ), sinkAll)
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
@@ -332,11 +336,15 @@ myXmobarPP = def
     red      = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
 
-mySB = statusBarProp "xmobar -x 1 ~/.xmobarrc &" (pure myXmobarPP)
+
+mySBX0 = statusBarProp "xmobar -x 1 ~/.xmobarrc &" (pure myXmobarPP)
+-- mySBX0 = statusBarProp "xmobar -x 0 ~/.xmobarrc-2 &" (pure myXmobarPP)
+-- mySBX1 = statusBarProp "xmobar -x 1 ~/.xmobarrc &" (pure myXmobarPP)
 
 main =
     xmonad 
-    .withSB mySB 
+    .withSB (mySBX0)
+    -- .withSB (mySBX0 <> mySBX1)
     .ewmh 
     $ docks defaults
 
