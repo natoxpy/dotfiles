@@ -8,6 +8,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+alias slp="sh -c 'sleep 1; xset dpms force off'"
+alias ezef="nohup easyeffects --gapplication-service &"
+export XDG_CURRENT_DESKTOP=KDE
+
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
